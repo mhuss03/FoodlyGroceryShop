@@ -1,7 +1,19 @@
 :root {
   --main: #f9f9f9;
-  --head: #4ca7a7;
+  --head: #f8ede3;
+  --nav: #bdd2b6;
+  --searchbar: #a2b29f;
+  --filter: #798777;
+  --items: #f8ede3;
+  --basketTotal: #bdd2b6;
+  --basketItems: #a2b29f;
+  --footer: #798777;
 }
+/* 
+  font-family: 'Jacques Francois Shadow', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+*/
 
 * {
   padding: 0;
@@ -10,22 +22,9 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--main);
 }
 
-.nav a {
-  text-decoration: none;
-  color: white;
-  padding: 10px;
-}
-
-a:hover {
-  background-color: #ffffff9e;
-}
-
-li {
-  list-style: none;
-}
+/*          ***   Grid - Container  ***            */
 
 .grid-container {
   display: grid;
@@ -40,12 +39,10 @@ li {
     "foot";
 }
 
-/* colors: #132043 #1f4172 #f1b4bb #fdf0f0  #08344c */
-
 @media (min-width: 38em) {
   .grid-container {
     grid-template-areas:
-      "header nav search search"
+      "header nav nav search"
       "filter item item basket"
       "filter item item blank"
       "filter item item blank"
@@ -55,48 +52,159 @@ li {
   }
 }
 
+/*          ***   Header  ***            */
+
 header {
   font-family: "Jacques Francois Shadow", serif;
   grid-area: header;
-  font-size: 2.5rem;
-  background-color: var(--head);
+  font-size: 2rem;
+  background-color: var(--nav);
+  padding: 1rem 1.5rem;
 }
 
-.blank {
-  grid-area: blank;
-}
+/*          ***   Navbar  ***            */
 
 .nav {
-  background-color: var(--head);
+  background-color: var(--nav);
+  grid-area: nav;
   padding-top: 3rem;
-  text-align: right;
+  text-align: center;
+}
 
+.nav a {
   text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.nav a:hover {
+  background-color: rgba(255, 255, 255, 0.62);
 }
 
 .nav li {
-  grid-area: nav;
+  list-style: none;
   display: inline-block;
   font-size: 1.25rem;
+  font-family: "Open Sans", sans-serif;
   margin: 0.2rem;
+  font-weight: bold;
 }
+
+.dropdown {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .nav {
+    display: none;
+  }
+
+  .dropdown {
+    position: relative;
+    grid-area: nav;
+    display: inline-block;
+    background-color: var(--nav);
+    text-align: center;
+  }
+
+  .dropbtn {
+    background-color: var(--footer);
+    color: white;
+    padding: 1rem 4rem;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 10%;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    margin-left: 30%;
+    background-color: var(--footer);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: white;
+  }
+
+  .dropdown-content > a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+    text-align: center;
+  }
+}
+/*          ***   Search-Box  ***            */
 
 .searchbox-container {
   grid-area: search;
-  background-color: var(--head);
+  background-color: var(--nav);
   text-align: right;
   padding-top: 2.5rem;
 }
 
 .search {
   border: 2px transparent;
-  background-color: white;
   font-size: 1.8rem;
+  background-color: var(--basketTotal);
 }
 
 .searchbox {
+  background-color: var(--searchbar);
+  border: 2px solid black;
   font-size: 2rem;
+  padding-left: 10px;
+  color: var(--head);
 }
+
+/*          ***   Filter - Container  ***            */
+
+.filter-container {
+  grid-area: filter;
+  margin: 2rem 3rem;
+  background-color: var(--items);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding-left: 1rem;
+}
+
+.filter-container h2 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.filter-container ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.filter-container li {
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+}
+
+.filter-container a {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem;
+  display: block;
+}
+
+.filter-container a:hover {
+  background-color: var(--filter);
+  padding-left: 2rem;
+}
+
+/*          ***   Item - Grid  ***            */
 
 .item-grid-container {
   grid-area: item;
@@ -104,15 +212,17 @@ header {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
   text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 1rem;
 }
 
 .item {
-  background-color: white;
+  background-color: var(--items);
   padding: 1rem 0;
 }
 
 .item:hover {
-  background-color: #e0d8d89c;
+  background-color: #fcdcbf;
 }
 
 .item > img {
@@ -120,20 +230,7 @@ header {
   height: 150px;
 }
 
-.basket {
-  grid-area: basket;
-}
-
-h4 {
-  margin: 1rem;
-}
-
-p {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-.button {
+.item .button {
   border: 1px solid transparent;
   background-color: #1652f0;
   color: white;
@@ -142,24 +239,39 @@ p {
   padding: 0.25rem 1.25rem;
 }
 
-.button:hover {
+.item .button:hover {
   text-decoration: underline;
   background-color: #1654f0b9;
   cursor: pointer;
 }
 
+.item h4 {
+  margin: 1rem;
+}
+
+.item p {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/*          ***   Basket  ***            */
+
 .basket {
-  background-color: #4ca7a7;
+  grid-area: basket;
+  background-color: var(--basketItems);
   text-align: center;
   margin: 2rem;
   padding: 1rem;
 }
 
 .basket-icon {
-  width: 4rem;
+  width: 2rem;
+  padding: 1rem;
+  border-radius: 50%;
   float: left;
   margin-left: 0.5rem;
   margin-top: 0.5rem;
+  background-color: var(--head);
 }
 
 .basket h3 {
@@ -183,37 +295,33 @@ p {
   margin: 1rem;
 }
 
-.filter-container {
-  grid-area: filter;
-  margin: 3rem;
-  margin-top: 2rem;
+.basket button:hover {
+  background-color: #0bd14388;
 }
 
-.filter-container h2 {
-}
+/*          ***   Blank  ***            */
 
-.filter-container li {
-  text-decoration: none;
+.blank {
+  background-color: var(--basketItems);
+  margin: 2rem;
   color: black;
-  padding: 1rem;
 }
 
-.filter-container a {
-  text-decoration: none;
-  color: black;
-  padding: 0.5rem;
+.blank h3 {
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
+.blank {
+  grid-area: blank;
 }
 
-.filter-container a:hover {
-  background-color: #e0d8d89c;
-  padding-left: 3rem;
-}
+/*          ***   footer  ***            */
 
 footer {
   grid-area: foot;
   font-size: 2rem;
   padding: 2rem;
-  background-color: var(--head);
+  background-color: var(--footer);
 }
 
 footer a {
@@ -225,15 +333,4 @@ footer a:hover {
   color: #3282b8;
   text-decoration: underline;
   padding: 0.2rem;
-}
-
-.blank {
-  background-color: grey;
-  margin: 2rem;
-  color: rgb(211, 210, 210);
-}
-
-.blank h3 {
-  margin-left: 2rem;
-  margin-top: 3rem;
 }
