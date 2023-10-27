@@ -1,0 +1,239 @@
+:root {
+  --main: #f9f9f9;
+  --head: #4ca7a7;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--main);
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+a:hover {
+  background-color: #ffffff9e;
+}
+
+li {
+  list-style: none;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "search"
+    "filter"
+    "item"
+    "basket"
+    "blank"
+    "foot";
+}
+
+/* colors: #132043 #1f4172 #f1b4bb #fdf0f0  #08344c */
+
+@media (min-width: 38em) {
+  .grid-container {
+    grid-template-areas:
+      "header nav search search"
+      "filter item item basket"
+      "filter item item blank"
+      "filter item item blank"
+      "filter item item blank"
+      "filter item item blank"
+      "foot foot foot foot";
+  }
+}
+
+header {
+  font-family: "Jacques Francois Shadow", serif;
+  grid-area: header;
+  font-size: 2.5rem;
+  background-color: var(--head);
+}
+
+.blank {
+  grid-area: blank;
+}
+
+.nav {
+  background-color: var(--head);
+  padding-top: 3rem;
+  text-align: right;
+
+  text-decoration: none;
+}
+
+.nav li {
+  grid-area: nav;
+  display: inline-block;
+  font-size: 1.25rem;
+  margin: 0.2rem;
+}
+
+.searchbox-container {
+  grid-area: search;
+  background-color: var(--head);
+  text-align: right;
+  padding-top: 2.5rem;
+}
+
+.search {
+  border: 2px transparent;
+  background-color: white;
+  font-size: 1.8rem;
+}
+
+.searchbox {
+  font-size: 2rem;
+}
+
+.item-grid-container {
+  grid-area: item;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  text-align: center;
+}
+
+.item {
+  background-color: white;
+  padding: 1rem 0;
+}
+
+.item:hover {
+  background-color: #e0d8d89c;
+}
+
+.item > img {
+  width: 200px;
+  height: 150px;
+}
+
+.basket {
+  grid-area: basket;
+}
+
+h4 {
+  margin: 1rem;
+}
+
+p {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.button {
+  border: 1px solid transparent;
+  background-color: #1652f0;
+  color: white;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  padding: 0.25rem 1.25rem;
+}
+
+.button:hover {
+  text-decoration: underline;
+  background-color: #1654f0b9;
+  cursor: pointer;
+}
+
+.basket {
+  background-color: #4ca7a7;
+  text-align: center;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.basket-icon {
+  width: 4rem;
+  float: left;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.basket h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff6600;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.basket button {
+  border: 1px solid transparent;
+  background-color: #0bd143;
+  color: white;
+  border-radius: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.25rem 1.25rem;
+  margin: 1rem;
+}
+
+.filter-container {
+  grid-area: filter;
+  margin: 3rem;
+  margin-top: 2rem;
+}
+
+.filter-container h2 {
+}
+
+.filter-container li {
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+}
+
+.filter-container a {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem;
+}
+
+.filter-container a:hover {
+  background-color: #e0d8d89c;
+  padding-left: 3rem;
+}
+
+footer {
+  grid-area: foot;
+  font-size: 2rem;
+  padding: 2rem;
+  background-color: var(--head);
+}
+
+footer a {
+  color: #1b262c;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #3282b8;
+  text-decoration: underline;
+  padding: 0.2rem;
+}
+
+.blank {
+  background-color: grey;
+  margin: 2rem;
+  color: rgb(211, 210, 210);
+}
+
+.blank h3 {
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
