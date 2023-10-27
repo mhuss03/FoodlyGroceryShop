@@ -57,7 +57,7 @@ body {
 header {
   font-family: "Jacques Francois Shadow", serif;
   grid-area: header;
-  font-size: 2rem;
+  font-size: 1.9rem;
   background-color: var(--nav);
   padding: 1rem 1.5rem;
 }
