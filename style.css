@@ -42,13 +42,14 @@ body {
 @media (min-width: 38em) {
   .grid-container {
     grid-template-areas:
-      "header nav nav search"
+      "header nav search"
+      "filter item basket"
+      "filter item blank"
+      "foot foot foot";
+    /* "header nav nav search"
       "filter item item basket"
       "filter item item blank"
-      "filter item item blank"
-      "filter item item blank"
-      "filter item item blank"
-      "foot foot foot foot";
+      "foot foot foot foot"; */
   }
 }
 
@@ -302,17 +303,11 @@ header {
 /*          ***   Blank  ***            */
 
 .blank {
+  grid-area: blank;
   background-color: var(--basketItems);
   margin: 2rem;
   color: black;
-}
-
-.blank h3 {
-  margin-left: 2rem;
-  margin-top: 3rem;
-}
-.blank {
-  grid-area: blank;
+  padding: 2rem;
 }
 
 /*          ***   footer  ***            */
